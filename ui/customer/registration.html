@@ -1,0 +1,247 @@
+<html>
+<head>
+<title>Facebook Home Page</title>
+  <link rel="stylesheet" a href="../css/styles.css"/>
+  
+  <script language="Javascript" type="text/javascript"> 
+
+   
+		function resetColor(ele, col){
+			document.getElementById(ele).style="color:"+col;
+		};
+		
+	
+
+
+
+
+		function validateEmail(emaill) {
+			var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+			 
+			return re.test(String(emaill).toLowerCase())
+		}
+		
+		
+		
+		
+		
+		
+		
+		function RegValidation(){
+			//Empty Values
+			var name = document.getElementById("fname").value;
+			var bill = document.getElementById("billnumber").value;
+			var mobile =document.getElementById("contact").value;
+			var emaill =document.getElementById("mail").value;
+			var address=document.getElementById("add").value;
+			//exception handling
+			try{
+				//Not Null Validation
+				if(!name) throw "name";
+				if(!bill) throw "bill";
+				if(!mobile) throw "mobile";
+if(!emaill) throw "emaill";
+if(!address) throw "address";				
+                
+				//name validation
+				if(! validateName(name)) throw "name";
+				
+				// Bill Number validattion
+				if(! validateBillno(bill)) throw "bill";
+				//mobile validation
+				if(!validatePhone(mobile))throw "mobile";
+				//Email Validation
+				if(!validateEmail(emaill)) throw "emaill";
+					
+				window.location.href='../common/success/success.html';
+			}catch(e){				
+				switch(e){
+					case "name":
+						document.getElementById("nametext").style="color:red";
+						//event
+						document.getElementById("fname").onkeypress = function() {resetColor("nametext","black")};
+						break;
+					case "bill":
+						document.getElementById("billtext").style="color:red";
+						//event
+						document.getElementById("billnumber").onkeypress = function() {resetColor("billtext","black")};
+						break;
+						case "mobile":
+						document.getElementById("mtext").style= "color:red";
+						//event
+						document.getElementById("contact").onkeypress= function() {resetColor("mtext","black")};
+						break;
+						case "emaill":
+						document.getElementById("emailtext").style= "color:red";
+						//event
+						document.getElementById("mail").onkeypress= function() {resetColor("emailtext","black")};
+						break;
+						case "address":
+						document.getElementById("addresstext").style= "color:red";
+						//event
+						document.getElementById("add").onkeypress= function() {resetColor("addresstext","black")};
+						break;
+					
+						
+						
+						
+						
+					default:
+						alert('other Error Occured');
+				}
+			}
+
+		}
+			
+
+		
+			function validateName(name) {
+			var fname=/^[a-zA-Z]+$/;
+
+  {
+    	return fname.test(String(name).toLowerCase());
+  } 
+}
+function validatePhone(mobile) {
+       
+        var x= /^[7-9][0-9]{9}$/;
+       return x.test(mobile); 
+            
+
+    }
+	function validateBillno(bill) {
+       
+        var x= /^[!0]*[0-9-\)\(]+$/;
+       return x.test(bill); 
+            
+
+    }
+	
+
+
+
+
+		
+		function confirmreset()
+ {
+  if(confirm("Do you want to reset the form?"))
+{
+   document.getElementById("fname").value="";
+ document.getElementById("billnumber").value="";
+			document.getElementById("contact").value="";
+			document.getElementById("mail").value="";
+			 document.getElementById("add").value="";
+ return true;
+}
+else
+ return false;
+ }
+		
+		
+ </script>
+	
+    
+</head>
+
+<body>
+<div>
+<div class="header-control">
+ <div class="control-align">
+ <div class="img-control">
+  <a href ="home.html"><img src="../image/facee.jpg"></a>
+<div class="login">
+  <table>
+  <tbody>
+  
+  <tr>
+  <td></td>  
+  <td><p> <a href="../index.html">Logout</a></p></td>
+  </tr>
+  </tbody></table>
+  </div>
+  
+  
+  
+  </div>
+  </div>
+</div>
+<div class="control-align">
+
+<div class="left"> 
+<h2>New Registration</h2>
+<p>Provide all inputs of your Billing Details</p>
+
+<table class="mytable1">
+	   <tbody><tr>
+	      <td><p id="nametext">
+		    Name:*
+			</p>
+		  </td>
+		  <td>
+		    <input type="text" placeholder="NAME" name="" class="ipt2" id="fname"/>
+			</td>
+	   </tr>
+	   <tr>
+	      <td><p id="billtext">
+	         Bill Number:*
+			 </p>
+	       </td>
+	         <td>
+	           <input type="integer" placeholder="***********" name="" class="ipt2" id="billnumber" />
+	         </td>
+	   </tr>
+	   
+	        <tr>
+	           <td><p id="mtext">
+	              Phone No:*
+		        </p></td>
+	               <td>
+		               <input type="phone" maxlength="10" placeholder="**********" name=""  id="contact" class="ipt2"/></td>
+		            
+		
+		    </tr>
+			   <tr>
+			     <td><p id="emailtext"> 
+				    Email Id:*
+					</p>
+				</td>
+				   <td>
+				     <input type="text" placeholder="Email" name="" class="ipt2" id="mail"/></td>
+                  
+			</tr>
+			<tr>
+			<td><p id="addresstext">
+			Address:*
+			</p>
+			
+			</td>
+			<td>
+			<input type="address" maxlength="1000" cols="25" rows="6" name="" id="add" class="ipt2"> 
+			</td>
+			</tr>
+	</tbody></table>
+	<input type = "submit" class="signup"   onclick="RegValidation();" />
+	<button type="submit" value="" class="signup"onClick="confirmreset() ">Reset</button>
+	
+	
+	
+
+</div>
+
+
+
+</div>
+</div>
+<div>
+<div class="footer-controll"> 
+
+<div class="content" style="clear:both;"></div>
+<p class="pcenter">Copyrights and all Terms and conditions applied bt www.facebook.com</p>
+
+</div>
+</div>
+
+
+
+</body>
+</html>

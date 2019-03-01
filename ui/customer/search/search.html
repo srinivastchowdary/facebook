@@ -1,0 +1,180 @@
+<html>
+<head>
+<title>Facebook Home Page</title>
+  <link rel="stylesheet" a href="../../css/styles.css"/>
+ <script language="Javascript" type="text/javascript">
+
+		function resetColor(ele, col){
+			document.getElementById(ele).style="color:"+col;
+		}
+		
+			
+		function SearchValidation(){
+			//Empty Values
+			var name = document.getElementById("fname").value;
+			var bill = document.getElementById("billnumber").value;
+			var mobile =document.getElementById("contact").value;
+			
+			//exception handling
+			try{
+				//Not Null Validation
+				if(!name) throw "name";
+				if(!bill) throw "bill";
+				if(!mobile) throw "mobile";
+
+				//name validation
+				if(! validateName(name)) throw "name";
+				
+				// Bill Number validattion
+				if(! validateBillno(bill)) throw "bill";
+				//mobile validation
+				if(!validatePhone(mobile))throw "mobile";
+				//Email Validation
+				
+					
+				window.location.href='results.html';
+			}catch(e){				
+				switch(e){
+					case "name":
+						document.getElementById("nametext").style="color:red";
+						//event
+						document.getElementById("fname").onkeypress = function() {resetColor("nametext","black")};
+						break;
+					case "bill":
+						document.getElementById("billtext").style="color:red";
+						//event
+						document.getElementById("billnumber").onkeypress = function() {resetColor("billtext","black")};
+						break;
+						case "mobile":
+						document.getElementById("mtext").style= "color:red";
+						//event
+						document.getElementById("contact").onkeypress= function() {resetColor("mtext","black")};
+						break;
+						
+					
+						
+						
+						
+						
+					default:
+						alert('other Error Occured');
+				}
+			}
+
+		}
+			
+
+		
+			function validateName(name) {
+			var fname=/^[a-zA-Z]+$/;
+
+  {
+    	return fname.test(String(name).toLowerCase());
+  } 
+}
+function validatePhone(mobile) {
+       
+        var x= /^[7-9][0-9]{9}$/;
+       return x.test(mobile); 
+            
+
+    }
+	function validateBillno(bill) {
+       
+        var x= /^[!0]*[0-9-\)\(]+$/;
+       return x.test(bill); 
+            
+
+    }
+	
+
+
+
+
+		
+		
+	
+ </script>
+	
+</head>
+
+<body>
+<div>
+<div class="header-control">
+ <div class="control-align">
+ <div class="img-control">
+  <a href ="../home.html"><img src="../../image/facee.jpg" ></img></a>
+<div class="login">
+  <table>
+  <tbody>
+  
+  <tr>
+  <td></td>  
+  <td><p onclick= "window.confirm('are you sure to Logout')"> <a href ="../../index.html">Logout</a></p></td>
+  </tr>
+  </tbody></table>
+  </div>
+  
+  
+  
+  </div>
+  </div>
+</div>
+<div class="control-align">
+
+<div class="left"> 
+<h2>Search</h2>
+<p>Provide all inputs to search customer</p>
+
+<table class="mytable1">
+	   <tbody><tr>
+	     <td><p id="nametext">
+		    Name:*
+			</p>
+		  </td>
+		  <td>
+		    <input type="text" placeholder="NAME" name="" class="ipt2" id="fname"/>
+			</td>
+	   </tr>
+	   <tr>
+	       <td><p id="billtext">
+	         Bill Number:*
+			 </p>
+	       </td>
+	         <td>
+	           <input type="integer" placeholder="***********" name="" class="ipt2" id="billnumber" />
+	         </td>
+	   </tr>
+	   
+	        <tr>
+	           <td><p id="mtext">
+	              Phone No:*
+		        </p></td>
+	               <td>
+		               <input type="phone" maxlength="10" placeholder="**********" name=""  id="contact" class="ipt2"/></td>
+		            
+		
+		    </tr>
+	</tbody></table>
+<input type = "submit" class="signup"  value="Search" onclick="SearchValidation();" />	
+
+
+</div>
+
+
+
+</div>
+</div>
+<div>
+<div class="footer-controll"> 
+
+<div class="content" style="clear:both;"></div>
+<p class="pcenter">Copyrights and all Terms and conditions applied bt www.facebook.com</p>
+
+</div>
+</div>
+
+
+
+</body>
+</html>
